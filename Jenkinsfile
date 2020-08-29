@@ -1,16 +1,12 @@
 pipeline {
-  agent {
-    node {
-      label 'First'
-    }
-
-  }
-  stages {
-    stage('') {
-      steps {
-        echo 'Hello'
+   agent any
+   stages {
+      stae('Source') {
+         git branch: 'test', url: 'git@diyvb:repos/gradle-greetings'
+         stash name: 'test-sources', includes: 'build.gradle,/src/test'
       }
-    }
-
-  }
+      stage('Build') {
+         
+      }
+   }
 }
